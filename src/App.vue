@@ -1,14 +1,30 @@
 <template>
-  <nav>
+  <!-- <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
-  <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
-  </nav>
+  
+  </nav> -->
+  <HelloWorld/>
+
 
   <router-view/>
+  
 </template>
+<script>
+// @ is an alias to /src
+import HelloWorld from '@/components/HelloWorld.vue'
+
+
+
+export default {
+  name: 'HomeView',
+  components: {
+    HelloWorld
+    
+  },
+ 
+}
+</script>
 
 <style>
 #app {
@@ -17,6 +33,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+ font-family: sans-serif;
 }
 
 nav {
@@ -27,8 +44,53 @@ nav a {
   font-weight: bold;
   color: #2c3e50;
 }
+.home{
+  
+  padding-top: 4%;
+  padding-bottom: 4%;
+  border: 1px solid black;
+  width: 90%;
+  margin-left: 4%;
+  margin-top: 1%;
+  display: flex;
+flex-direction: row;
+justify-content: space-around;
+
+ 
+  
+  
+}
 
 nav a.router-link-exact-active {
   color: #42b983;
 }
+input{
+  width: 100%;
+   border: 1px solid black;
+  text-align: center;
+  border-radius: 2px;
+}
+select{
+  border: 1px solid black ;
+   border-radius: 2px;
+
+}
+#but{
+  background-color: rgb(57, 57, 255);
+  border-radius: 6%;
+  color: white;
+  padding: 3px;
+}
+
+.result{
+ margin-top: 3%; 
+ padding: 4%;
+ background-color: rgb(24, 6, 102);
+ color: white;
+ width: 50%;
+ margin-left: 25%;
+ margin-bottom: 2%;
+ 
+}
+
 </style>
