@@ -1,4 +1,5 @@
 <template>
+
  
   <div class="home">
         <div>
@@ -54,11 +55,13 @@
  
 
 
+
 </template>
 
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
+import SideBar from '@/components/admin/SideBar.vue'
 
 export default {
   name: 'HomeView',
@@ -74,6 +77,7 @@ export default {
         text3: [],
         number: []
     }
+
   }
 }
 </script>
