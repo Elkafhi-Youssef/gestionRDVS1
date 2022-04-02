@@ -5,6 +5,7 @@ export default createStore({
   state: {
     email:'',
     password:'',
+    user:[],
     name:'youssef',
       posts: ['post 1', 'post 2', 'post 3', 'post 4'],
       curentRouter : 'user',
@@ -14,25 +15,34 @@ export default createStore({
  
    
     // arrow function
-    postsCount: state => {
-      
-      return state.posts.length
+    Allusers: state => {
+      return state.user ;
     },
     // can access other getters
-    postsCountMessage: (state, getters) => `${getters.postsCount} posts available`
+    // postsCountMessage: (state, getters) => `${getters.postsCount} posts available`
   },
 
   mutations: {
-    INSERT_POST(state,  payload){
-      state.curentRouter =payload
-      console.log(state.curentRouter);
-},
+    INSERT_USER(state,  payload){
+      state.user =payload
+    }
   },
   actions:{
-    async insertPost({commit}, payload){
+    async getAllUser({commit}){
        //make some kind of ajax request 
-        commit('INSERT_POST', payload)
-    }
+       var requestOptions = {
+        method: 'POST',
+        redirect: 'follow'
+      };
+      
+      fetch("http://localhost/gestionRDVS/backendAPI/clients/getAlluser", requestOptions)
+        .then(response => response.json())
+        .then(result => {console.log(result.data)
+          commit('INSERT_USER', result.data)})
+        .catch(error => console.log('error', error));
+        
+    },
+    
   },
   modules: {
   }
