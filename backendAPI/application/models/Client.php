@@ -8,11 +8,11 @@
         }
 
         // Get all users
-        // public function getAllPosts($table){
-        //     $this->db->prepareQuery("SELECT * FROM $table");
-        //     $this->db->execute();
-        //     return $this->db->getResult(); 
-        // }
+        public function getAlluser(){
+            $this->db->prepareQuery("SELECT * FROM user");
+            $this->db->execute();
+            return $this->db->getResult(); 
+        }
 
         public function addClient($data ){
             $this->db->insert("post",["title_film", "countryFilm", "descFilm", "genreFilm", "categoryFilm", "imageFilm","id_user"],$data);

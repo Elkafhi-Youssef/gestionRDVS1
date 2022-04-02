@@ -7,7 +7,7 @@ class Clients extends Controller
     public function __construct()
     {
 
-        $this->setModelInstance('client');
+        $this->setModelInstance('Client');
         
     }
     public function index()
@@ -16,10 +16,12 @@ class Clients extends Controller
         echo json_encode(array('message '=> 'success',
         'data'=>$data));
         
-    
         
     }
-
+  function getAlluser(){
+     $data = $this->modelInstance->getAlluser();
+        echo json_encode(array('message '=> 'success','data'=>$data));
+    }
     public function login()
     {
         if (($_SERVER['REQUEST_METHOD'] == 'POST')) {
