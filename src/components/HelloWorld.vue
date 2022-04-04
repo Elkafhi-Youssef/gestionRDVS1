@@ -2,7 +2,7 @@
   <div class="hello">
    
     
-    <vs-navbar>
+    <vs-navbar v-if="name == 'user'">
       <div>
         <vs-navbar-title>
           RDVS
@@ -13,7 +13,7 @@
         <router-link to="/">Home</router-link>
       </vs-navbar-item>
       <vs-navbar-item index="2">
-        <router-link to="/about">Admin</router-link>
+        <router-link @click="changename"  class=" b" to="/LoginAdmin">Go to Login</router-link>
   
       </vs-navbar-item>
 
@@ -30,7 +30,12 @@ export default {
    data: ()=>({
     colorx:'#1db952',
     indexActive: 0
-  })
+  }),
+   computed:{
+     name(){
+      return this.$store.state.curentRouter
+      },
+   },
 }
 </script>
 
