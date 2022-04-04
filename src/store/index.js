@@ -6,6 +6,7 @@ export default createStore({
     email:'',
     password:'',
     user:[],
+    ticket:[],
     name:'youssef',
       posts: ['post 1', 'post 2', 'post 3', 'post 4'],
       curentRouter : 'user',
@@ -18,6 +19,9 @@ export default createStore({
     Allusers: state => {
       return state.user ;
     },
+    Alltickets: state => {
+      return state.ticket ;
+    },
     // can access other getters
     // postsCountMessage: (state, getters) => `${getters.postsCount} posts available`
   },
@@ -25,6 +29,12 @@ export default createStore({
   mutations: {
     INSERT_USER(state,  payload){
       state.user =payload
+    },
+    INSERT_TICKET(state,  payload){
+      state.ticket =payload
+    },
+    INSERTROUTER(state,  payload){
+      state.curentRouter =payload
     }
   },
   actions:{
@@ -40,9 +50,22 @@ export default createStore({
         .then(result => {console.log(result.data)
           commit('INSERT_USER', result.data)})
         .catch(error => console.log('error', error));
-        
     },
-    
+    async getAllTicket({commit}){
+      //make some kind of ajax request 
+      var requestOptions = {
+       method: 'POST',
+       redirect: 'follow'
+     };
+      fetch("http://localhost/gestionRDVS/backendAPI/Tickets/getAllTickets", requestOptions)
+       .then(response => response.json())
+       .then(result => {console.log(result.data)
+         commit('INSERT_TICKET', result.data)})
+       .catch(error => console.log('error', error));
+   },
+   async insertPost({commit}, payload){
+    commit('INSERTROUTER', payload)
+  } 
   },
   modules: {
   }

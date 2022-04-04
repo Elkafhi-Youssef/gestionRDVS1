@@ -1,13 +1,16 @@
+
 <template>
   <!-- <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
-  
+   <router-link @click="changename" v-if="name == 'user'"  class=" border-2 border-red-700 py-2 px-1 mt-3 text-black" to="/LoginAdmin">Go to Login</router-link>
+   <!-- <h3> check :{{name}}</h3> -->
+  <router-view></router-view>
   </nav> -->
   <HelloWorld/>
 
 
-  <router-view/>
+ 
   
 </template>
 <script>
@@ -22,6 +25,33 @@ export default {
     HelloWorld
     
   },
+   data(){
+      return{
+        curentRouter:'admin',
+      }
+    },
+     methods: {
+        changename(){
+          this.$store.dispatch('insertPost', this.curentRoute)
+
+        }
+      },
+    computed:{
+    ...mapState(['posts']),
+    ...mapGetters(['postsCount']),
+     name(){
+      return this.$store.state.curentRouter
+      },
+      changename(){
+        this.$store.dispatch('insertPost', this.curentRoute)
+      }
+    
+  },
+   created() {
+    this.curentRoute= this.$store.state.curentRouter
+    
+
+  }
  
 }
 </script>
@@ -92,5 +122,6 @@ select{
  margin-bottom: 2%;
  
 }
+
 
 </style>

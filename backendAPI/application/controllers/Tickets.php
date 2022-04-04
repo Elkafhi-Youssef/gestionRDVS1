@@ -11,9 +11,12 @@ class Tickets extends Controller{
     
 
     public function __construct(){
-
+        $this->setModelInstance('Ticket');
     }
-
+    function getAllTickets(){
+        $data = $this->modelInstance->getAllTickets();
+           echo json_encode(array('message '=> 'success','data'=>$data));
+       }
     // index : default method 
     public function index(){
     }
