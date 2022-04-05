@@ -66,7 +66,7 @@
           </thead>
           <tbody>
             <tr v-for="user in  Allusers"  :key="user.user-id" class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1{{user.CIN}}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{user.CIN}}</td>
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
               {{user.Fullname}}
               </td>
@@ -106,6 +106,11 @@ import { mapGetters } from 'vuex'
         components:{
             BodyAdmin
         },
+         data(){
+          return{
+          curentRoute: 'adminhome', 
+          }
+        },
         methods:{
             //  async getUserInfo(){
             //     this.$store.dispatch('getAllUser')
@@ -118,7 +123,8 @@ import { mapGetters } from 'vuex'
         created() {
         this.$store.dispatch("getAllUser").then(() => {
         console.log("This would be printed after dispatch!!")
-        })
+        }),
+        this.$store.dispatch('insertPost', this.curentRoute)
     }
     }
 </script>

@@ -103,6 +103,11 @@ import { mapGetters } from 'vuex'
 import { ref } from 'vue'
     export default {
         name: 'ListTickets',
+        data(){
+          return{
+          curentRoute: 'adminhome', 
+          }
+        },
         components: {
             
         },
@@ -119,6 +124,8 @@ import { ref } from 'vue'
         this.$store.dispatch("getAllTicket").then(() => {
         console.log("This would be printed after dispatch!!")
         })
+        this.$store.dispatch('insertPost', this.curentRoute)
+
        }
         // setup() {
         //     const p = ref(null)

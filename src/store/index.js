@@ -1,14 +1,15 @@
 import { createStore } from 'vuex'
 import { createRouter } from 'vue-router';
 
-export default createStore({
+export default createStore
+({
   state: {
     email:'',
     password:'',
+    log:null,
     user:[],
     ticket:[],
-    name:'youssef',
-      posts: ['post 1', 'post 2', 'post 3', 'post 4'],
+    
       curentRouter : 'user',
   },
   
@@ -21,6 +22,9 @@ export default createStore({
     },
     Alltickets: state => {
       return state.ticket ;
+    },
+    getlog: state => {
+      return state.log ;
     },
     // can access other getters
     // postsCountMessage: (state, getters) => `${getters.postsCount} posts available`
@@ -35,7 +39,19 @@ export default createStore({
     },
     INSERTROUTER(state,  payload){
       state.curentRouter =payload
-    }
+    },
+    ADDEMAIL(state,  payload){
+      state.email= payload
+     
+    },
+    ADDEPASSWORD(state,  payload){
+      state.password= payload
+     
+    },
+    AddLog(state,  payload){
+    state.log= payload
+    },
+    
   },
   actions:{
     async getAllUser({commit}){
@@ -65,8 +81,31 @@ export default createStore({
    },
    async insertPost({commit}, payload){
     commit('INSERTROUTER', payload)
-  } 
+  } ,
+  async addEmail({commit}, payload){
+    console.log('here');
+    commit('ADDEMAIL', payload)
   },
+  async addPassword({commit}, payload){
+    console.log('here');
+    commit('ADDEPASSWORD', payload)
+  },
+  async login({state}){
+    // const body =commit('getInfoLogin')
+    //make some kind of ajax request 
+    var requestOptions = {
+     method: 'POST',
+     body: JSON.stringify({email:state.email, password:state.password}),
+   };
+   console.log(state.email);
+   console.log(state.password);
+   const res = await fetch("http://localhost/gestionRDVS/backendAPI/Admins/login", requestOptions)
+   const data = await res.json()
+   this.commit('AddLog', data.data)
+    console.log('finish action login');
+  },
+},
   modules: {
   }
-})
+ }
+ )
