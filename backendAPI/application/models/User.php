@@ -20,18 +20,6 @@
             return  $this->db->getRow(); 
             
         }
-        public function getAllMovies(){
-            $this->db->prepareQuery("SELECT * FROM post
-            where categoryFilm ='Movies'");
-           $this->db->execute();
-            return  $this->db->getResult(); 
-            
-        }
-        public function getAllSerials(){
-            $this->db->prepareQuery("SELECT * FROM post
-            where categoryFilm ='Serials'");
-           $this->db->execute();
-            return  $this->db->getResult(); 
-            
-        }
+      
+       
      }
