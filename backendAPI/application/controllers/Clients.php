@@ -41,9 +41,8 @@ class Clients extends Controller
         $dt = json_decode(file_get_contents("php://input"));
         $var1 = $dt->Fullname;
         $var2 = $dt->CIN;
-        $var3 = $dt->job;
-        $var4 = $dt->age;
-        $dt =  $this->modelInstance->updateClient($var1,$var2,$var3,$var4,$id);
+        $var3 = $dt->age;
+        $dt =  $this->modelInstance->updateClient($var1,$var2,$var3,$id);
         if($dt){
             echo json_encode(array('message '=> 'success','data'=>1));
            }else{

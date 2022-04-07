@@ -67,13 +67,13 @@
             <tr v-for="ticket in Alltickets" :key="ticket.user_id"  class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-              name:{{ticket.Fullname}}
+              {{ticket.firstname}}
               </td>
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                time:{{ticket.time}}
+                {{ticket.horaire}}
               </td>
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                date:{{ticket.date}}
+                {{ticket.date}}
               </td>
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
