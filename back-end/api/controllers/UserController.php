@@ -25,12 +25,12 @@ class UserController //UtilisateurController
     }
 
 
-    public function nbru($lastname)  // generate random number
+    public function nbru($Cin)  // generate random number
     {
         $user = new User();
         $nb = $user->count();
         $ran = rand();
-        return $lastname . $nb['nb'] . $ran;
+        return $Cin . $nb['nb'] . $ran;
     }
 
     public function Signin($ref)

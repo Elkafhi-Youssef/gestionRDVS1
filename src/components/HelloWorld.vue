@@ -8,14 +8,15 @@
           RDVS
         </vs-navbar-title>
       </div>
-
+<div>
       <vs-navbar-item index="0" >
-        <router-link to="/">Home</router-link>
-      </vs-navbar-item>
-      <vs-navbar-item index="2">
-        <router-link @click="changename"  class=" b" to="/LoginAdmin">Go to Login</router-link>
+        <router-link class="nav2" to="/">Home</router-link>
+        <router-link class="nav2" to="/login">login</router-link>
+     
+        <router-link class="nav2" @click="changename"   to="/LoginAdmin">Admin</router-link>
   
       </vs-navbar-item>
+      </div>
 
      
     </vs-navbar>
@@ -44,12 +45,15 @@ vs-navbar{
   display: flex;
   flex-direction: row;
   background-color: rgb(0, 0, 0);
-  justify-content: space-between;
+  justify-content: space-around;
   color: white;
   padding: 1%;
 
 
 }
+ .nav2{
+   margin-left: 10%;
+ }
 
  
 </style>

@@ -8,7 +8,75 @@
    <!-- <h3> check :{{name}}</h3> -->
   </nav>
   <router-view></router-view>
+<footer class="text-center text-white" style="background-color: #f1f1f1;">
+  <!-- Grid container -->
+  <div class="container pt-4">
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <!-- Facebook -->
+      <a
+        class="btn btn-link btn-floating btn-lg text-dark m-1"
+        href="#!"
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-facebook-f"></i
+      ></a>
 
+      <!-- Twitter -->
+      <a
+        class="btn btn-link btn-floating btn-lg text-dark m-1"
+        href="#!"
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-twitter"></i
+      ></a>
+
+      <!-- Google -->
+      <a
+        class="btn btn-link btn-floating btn-lg text-dark m-1"
+        href="#!"
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-google"></i
+      ></a>
+
+      <!-- Instagram -->
+      <a
+        class="btn btn-link btn-floating btn-lg text-dark m-1"
+        href="#!"
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-instagram"></i
+      ></a>
+
+      <!-- Linkedin -->
+      <a
+        class="btn btn-link btn-floating btn-lg text-dark m-1"
+        href="#!"
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-linkedin"></i
+      ></a>
+      <!-- Github -->
+      <a
+        class="btn btn-link btn-floating btn-lg text-dark m-1"
+        href="#!"
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-github"></i
+      ></a>
+    </section>
+    <!-- Section: Social media -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2020 Copyright:
+    <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
 
  
   
@@ -58,71 +126,13 @@ export default {
 </script>
 
 <style>
-/* #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
- font-family: sans-serif;
-}
 
-nav {
-  padding: 30px;
+footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
-
-nav a {
-  font-weight: bold;
-  color: #ffffff;
-}
-.home{
-  
-  padding-top: 4%;
-  padding-bottom: 4%;
-  border: 1px solid black;
-  width: 90%;
-  margin-left: 4%;
-  margin-top: 1%;
-  display: flex;
-flex-direction: row;
-justify-content: space-around;
-
- 
-  
-  
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-input{
-  width: 100%;
-   border: 1px solid black;
-  text-align: center;
-  border-radius: 2px;
-}
-select{
-  border: 1px solid black ;
-   border-radius: 2px;
-
-}
-#but{
-  background-color: rgb(57, 57, 255);
-  border-radius: 6%;
-  color: white;
-  padding: 3px;
-}
-
-.result{
- margin-top: 3%; 
- padding: 4%;
- background-color: rgb(24, 6, 102);
- color: white;
- width: 50%;
- margin-left: 25%;
- margin-bottom: 2%;
- 
-} */
 
 
 </style>
