@@ -1,6 +1,5 @@
 <template>
 <div class="flex ">
-
     <div>
         <div class="flex flex-col w-44 h-screen py-8 bg-white border-r dark:bg-gray-800 dark:border-gray-600 sticky top-8 left-0">
         <h2 class="text-3xl font-semibold text-center text-gray-800 dark:text-white">RDVs</h2>
@@ -25,14 +24,14 @@
                     </svg>
 
                     <span class="mx-4 font-medium">Tickets</span>
-                </router-link>
-                 <a class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700" href="#">
+                </router-link> 
+                 <router-link to="/logout" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                     </svg>
 
                     <span class="mx-4 font-medium">Log out </span>
-                </a>
+                </router-link>
                 
             </nav>
         </div>
@@ -166,7 +165,7 @@ import { mapGetters } from 'vuex'
               .catch(error => console.log('error', error));
             },
             getuserid(id){
-              console.log(id);
+              
               this.getClient(id)
               this.showupdate=true;
             },
@@ -177,7 +176,6 @@ import { mapGetters } from 'vuex'
               };
                const res = await fetch("http://localhost/gestionRDVS/backendAPI/Clients/getClient/"+id, requestOptions)
                 const data = await res.json()
-                console.log(data.data)
                 this.clientinfo.user_id=data.data.user_id
                 this.clientinfo.Fullname=data.data.Fullname
                 this.clientinfo.CIN=data.data.CIN
@@ -199,13 +197,17 @@ import { mapGetters } from 'vuex'
 
                 fetch("http://localhost/gestionRDVS/backendAPI/Clients/updateClient/"+id, requestOptions)
                   .then(response => response.json())
-                  .then(result => {console.log(result)
+                  .then(result => {
                     this.$store.dispatch("getAllUser")
                     this.showupdate=false;
 
                   })
                   .catch(error => console.log('error', error));
                   },
+                  logout(){
+                    localStorage.clear();
+                    this.$router.push('/LoginAdmin')
+                  }
         },
         computed:{
           ...mapGetters(['Allusers'])

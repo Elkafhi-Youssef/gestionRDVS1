@@ -60,10 +60,9 @@ export default createStore
         method: 'POST',
         redirect: 'follow'
       };
-      
       fetch("http://localhost/gestionRDVS/backendAPI/clients/getAlluser", requestOptions)
         .then(response => response.json())
-        .then(result => {console.log(result.data)
+        .then(result => {
           commit('INSERT_USER', result.data)})
         .catch(error => console.log('error', error));
     },
@@ -75,7 +74,7 @@ export default createStore
      };
       fetch("http://localhost/gestionRDVS/backendAPI/Tickets/getAllTickets", requestOptions)
        .then(response => response.json())
-       .then(result => {console.log(result.data)
+       .then(result => {
          commit('INSERT_TICKET', result.data)})
        .catch(error => console.log('error', error));
    },

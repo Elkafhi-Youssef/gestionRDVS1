@@ -4,12 +4,18 @@ import AboutView from '@/views/AboutView.vue'
 import LoginAdmin from '@/views/admin/LoginAdmin.vue'
 import ListTickets from '@/views/admin/ListTickets.vue'
 import AdminHome from '@/views/admin/AdminHome.vue'
+import Logout from '@/views/admin/Logout.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/logout',
+    name: 'logout',
+    component: Logout
   },
   {
     path: '/adminhome',
