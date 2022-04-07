@@ -7,7 +7,7 @@
             $this->db = new Db();
         }
         public function getAllTickets(){
-            $this->db->prepareQuery("SELECT * FROM user INNER JOIN booking on user.user_id= booking.user_id");
+            $this->db->prepareQuery("SELECT * FROM users INNER JOIN rendezvous on users.reference= rendezvous.reference");
             $this->db->execute();
             return $this->db->getResult(); 
         }

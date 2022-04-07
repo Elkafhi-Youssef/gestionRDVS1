@@ -23,7 +23,8 @@
    
 
    // Database params
-   define('DB_NAME','gestionrdvs');
+  //  define('DB_NAME','gestionrdvs');
+   define('DB_NAME','api');
    define('DB_USER','root');
    define('DB_HOST','127.0.0.1');
    define('DB_PASSWD','');

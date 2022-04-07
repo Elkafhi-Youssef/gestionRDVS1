@@ -53,9 +53,8 @@
               <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                 age
               </th>
+              
               <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                Job
-              </th><th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                 #
               </th>
               <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
@@ -65,23 +64,21 @@
           </thead>
           <tbody>
             <tr v-for="user in Allusers" :key="user.user_id"  class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{user.user_id}}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{user.Cin}}</td>
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-              {{user.Fullname}}
+              {{user.firstname}}
               </td>
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                 {{user.age}}
               </td>
+              
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                {{user.job}}
-              </td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                <svg @click="getuserid(user.user_id)" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg @click="getuserid(user.reference)" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                 </svg>
               </td>
               <td  class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                <svg @click="deleteClient(user.user_id)" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg @click="deleteClient(user.reference)" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                 </svg>
               </td>
@@ -110,10 +107,7 @@
                     <label class="text-gray-700 dark:text-gray-200" for="CIN">CIN</label>
                     <input  v-model="clientinfo.CIN" id="CIN" type="text"  class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
                 </div>
-                <div>
-                    <label class="text-gray-700 dark:text-gray-200" for="job">Job</label>
-                    <input v-model="clientinfo.job"  id="job" type="text"   class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
-                </div>
+               
                 <div>
                     <label class="text-gray-700 dark:text-gray-200" for="age">age</label>
                     <input v-model="clientinfo.age" id="age" type="number" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
@@ -145,7 +139,6 @@ import { mapGetters } from 'vuex'
           clientinfo:{
             Fullname:'',
             CIN:'',
-            job:'',
             age:'',
             user_id:''
           }
@@ -176,13 +169,13 @@ import { mapGetters } from 'vuex'
               };
                const res = await fetch("http://localhost/gestionRDVS/backendAPI/Clients/getClient/"+id, requestOptions)
                 const data = await res.json()
-                this.clientinfo.user_id=data.data.user_id
-                this.clientinfo.Fullname=data.data.Fullname
-                this.clientinfo.CIN=data.data.CIN
-                this.clientinfo.job=data.data.job
+                this.clientinfo.user_id=data.data.reference
+                this.clientinfo.Fullname=data.data.firstname
+                this.clientinfo.CIN=data.data.Cin
                 this.clientinfo.age=data.data.age
             },
            updateClient(id){
+             console.log(id);
               var myHeaders = new Headers();
                 myHeaders.append("Content-Type", "application/json");
 
@@ -198,6 +191,7 @@ import { mapGetters } from 'vuex'
                 fetch("http://localhost/gestionRDVS/backendAPI/Clients/updateClient/"+id, requestOptions)
                   .then(response => response.json())
                   .then(result => {
+                    console.log(result);
                     this.$store.dispatch("getAllUser")
                     this.showupdate=false;
 

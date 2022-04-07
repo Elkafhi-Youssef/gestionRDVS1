@@ -20,7 +20,7 @@ class Admins extends Controller
             // echo json_encode(array('message '=> 'success','data'=>$check));
             // return;
             if ($check > 0) {
-                echo json_encode(array('data'=>$check['admin-id']));
+                echo json_encode(array('data'=>$check['id']));
             } else{
                 echo json_encode(array('data'=>-1));
             }
